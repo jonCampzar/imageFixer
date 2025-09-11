@@ -1,11 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ajustador de imagenes</title>
+  </head>
+  <body>
+    <h2>Generador de imagen con dimensiones específicas</h2>
+
+    <input type="file" id="fileInput" accept="image/*" /><br /><br />
+    <label>Ancho deseado en px:</label>
+    <input type="number" id="targetWidth" value="400" />
+    <label>Alto deseado en px:</label>
+    <input type="number" id="targetHeight" value="400" /><br /><br />
+    <label>Color de fondo:</label>
+    <input type="color" id="bgColor" value="#ffffff" /><br /><br />
+
+    <button id="processBtn">Procesar Imagen</button>
+    <button id="downloadBtn" style="display: none">Descargar</button>
+
+    <br />
+    <canvas id="canvas"></canvas>
+
+    <script src="index.js"></script>
+  </body>
 </html>
