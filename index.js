@@ -1,10 +1,11 @@
- const fileInput = document.getElementById("fileInput");
+const fileInput = document.getElementById("fileInput");
     const processBtn = document.getElementById("processBtn");
     const downloadBtn = document.getElementById("downloadBtn");
     const canvas = document.getElementById("canvas");
     const ctx = canvas.getContext("2d");
     let img = null;
 
+    // Cargar imagen
     fileInput.addEventListener("change", (e) => {
       const file = e.target.files[0];
       if (!file) return;
@@ -28,12 +29,23 @@
       const targetHeight = parseInt(document.getElementById("targetHeight").value);
       const bgColor = document.getElementById("bgColor").value;
 
-      canvas.width = targetWidth;
-      canvas.height = targetHeight;
+      // Escalar para pantallas de alta densidad
+canvas.width = targetWidth;
+canvas.height = targetHeight;
+canvas.style.width = targetWidth + "px";
+canvas.style.height = targetHeight + "px";
 
+
+
+      // Fondo
       ctx.fillStyle = bgColor;
       ctx.fillRect(0, 0, targetWidth, targetHeight);
 
+      // Mejor calidad de interpolación
+      ctx.imageSmoothingEnabled = true;
+      ctx.imageSmoothingQuality = "high";
+
+      // Mantener proporciones
       const scale = Math.min(targetWidth / img.width, targetHeight / img.height);
       const newWidth = img.width * scale;
       const newHeight = img.height * scale;
@@ -47,7 +59,7 @@
 
     downloadBtn.addEventListener("click", () => {
       const link = document.createElement("a");
-      link.download = "imagen_ajustada.png";
-      link.href = canvas.toDataURL("image/png");
+      link.download = "imagen_ajustada.png"; 
+      link.href = canvas.toDataURL("image/png"); 
       link.click();
     });
