@@ -47,7 +47,7 @@
 
     downloadBtn.addEventListener("click", () => {
       const link = document.createElement("a");
-      link.download = "imagen_final.png";
+      link.download = "imagen_ajustada.png";
       link.href = canvas.toDataURL("image/png");
       link.click();
     });
